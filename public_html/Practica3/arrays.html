@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="arrays.js" type="text/javascript"></script>
+        <link href="arrays.css" rel="stylesheet" type="text/css"/>
+        <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body onload="mostrarArray()">
+        
+        <div class="container-fluid">
+            <div class="row" id="infoArray" >
+                
+            </div>
+            <div class="row">
+                <div class="boton col-xs-2" onclick="primerUltimo()">PRIMER/ULTIMO NUMERO</div>
+            </div>
+            <div class="row">
+                <div class="boton col-xs-2" onclick="addUltimo()">AÑADIR NUMERO FINAL</div>
+                <div class="boton col-xs-2" onclick="addPrimero()">AÑADIR NUMERO INICIO</div>
+            </div>
+            <div class="row">
+                <div class="boton col-xs-2" onclick="borrarUltimo()">BORRAR ULTIMO NUMERO</div>
+                <div class="boton col-xs-2" onclick="borrarPrimero()">BORRAR PRIMER NUMERO</div>
+            </div>
+            <div class="row">
+                <div class="boton col-xs-2" onclick="calcular()">CALCULAR</div>
+            </div>
+            
+        </div>
+        
+        <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+    </body>
+</html>
