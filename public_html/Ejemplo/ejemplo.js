@@ -45,6 +45,6 @@
 //}
 
 
-//var random = Math.random() * (12 - 0) + 0;
+var random = Math.random() * (12 - 0) + 0;
 var random = Math.floor(Math.random()*(12-0))+0;
 document.write(random);
