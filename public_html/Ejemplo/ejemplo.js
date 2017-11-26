@@ -45,6 +45,39 @@
 //}
 
 
-var random = Math.random() * (12 - 0) + 0;
-var random = Math.floor(Math.random()*(12-0))+0;
-document.write(random);
+//var random = Math.random() * (12 - 0) + 0;
+//var random = Math.floor(Math.random()*(12-0))+0;
+//document.write(random);
+
+function Caracol(){
+    this.nombre;
+    this.puntos;
+}
+var c1 = new Caracol();
+var c2 = new Caracol();
+var c3 = new Caracol();
+var c4 = new Caracol();
+c1 = { "nombre": "Speed Cargol", "puntos" : 10};
+c2 = { "nombre": "Cargolet", "puntos" : 100};
+c3 = { "nombre": "Slow Cargol", "puntos" : 50};
+c4 = { "nombre": "Gran Cargol", "puntos" : 80};
+var caracoles = [c1, c2, c3, c4];
+function btn(){
+
+for (var i=0;i<caracoles.length;i++){
+        
+        if(i==0){
+            var infoSprint1 = document.getElementById("infoSprint1");
+            infoSprint1.innerHTML = "<div>" + "1. " + caracoles[i].nombre + " / " + "Total: " + caracoles[i].puntos+ "</div>";                                     
+        }else if(i==1){
+            var infoSprint1 = document.getElementById("infoSprint2");
+            infoSprint1.innerHTML = "<div>" + "1. " + caracoles[i].nombre + " / " + "Total: " + caracoles[i].puntos+ "</div>";
+        }else if(i==2){
+            var infoSprint1 = document.getElementById("infoSprint3");
+            infoSprint1.innerHTML = "<div>" + "1. " + caracoles[i].nombre + " / " + "Total: " + caracoles[i].puntos+ "</div>";
+        }else if(i==3){
+            var infoSprint1 = document.getElementById("infoSprint4");
+            infoSprint1.innerHTML = "<div>" + "1. " + caracoles[i].nombre + " / " + "Total: " + caracoles[i].puntos+ "</div>";
+        }
+    }
+    }
