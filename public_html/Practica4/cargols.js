@@ -3,6 +3,7 @@ function Caracol(){
     this.puntos;
     this.velocidad;
     this.distancia;
+    this.sprint;
 }
 var c1 = new Caracol();
 var c2 = new Caracol();
@@ -20,71 +21,57 @@ function SprintIndividual(){
     this.sprint;
 }
 
-var Sprint = [SprintIndividual, SprintIndividual, SprintIndividual, SprintIndividual];
+
 var Sprints = [];
 
 var contador = 0;
+
+var num = 0;
 
 function run(){
     contador++;
     var numSprint = document.getElementById("numSprint");
     numSprint.innerHTML = "<p>SPRINT " + contador + "</p>";
-    
+    var Sprint = [new SprintIndividual(), new SprintIndividual(), new SprintIndividual(), new SprintIndividual()];
     for (var i=0;i<caracoles.length;i++){
         
-        var sprint1 = Math.floor(Math.random() * caracoles[i].velocidad) + 1;
-        var sprint2 = Math.floor(Math.random() * caracoles[i].velocidad) + 1;
+        caracoles[i].sprint = Math.floor(Math.random() * caracoles[i].velocidad) + 1;
+        /*var sprint2 = Math.floor(Math.random() * caracoles[i].velocidad) + 1;
         var sprint3 = Math.floor(Math.random() * caracoles[i].velocidad) + 1;
         var sprint4 = Math.floor(Math.random() * caracoles[i].velocidad) + 1;
-        caracoles[i].distancia = caracoles[i].distancia + sprint1;   
+        */caracoles[i].distancia = caracoles[i].distancia + caracoles[i].sprint;   
     }
     
     caracoles.sort(function (a, b){return (b.distancia - a.distancia)});
     
     for (var i=0;i<caracoles.length;i++){
-        
-        if(i==0){
-            Sprint[0].nombre = caracoles[0].nombre;
-            Sprint[0].sprint = sprint1;
-            Sprint[0].total = caracoles[0].distancia;
-            var infoSprint1 = document.getElementById("infoSprint1");
-            infoSprint1.innerHTML = "<div class='col-xs-12 col-sm-6 col-md-6' style='background-color: #cccc00 '>" + "1. " + caracoles[0].nombre + " / " + "Total: " + caracoles[i].distancia + " / " + "Sprint: " + sprint1 + "</div>";                                     
-        }else if(i==1){
-            Sprint[1].nombre = caracoles[1].nombre;
-            Sprint[1].sprint = sprint2;
-            Sprint[1].total = caracoles[1].distancia;
-            var infoSprint2 = document.getElementById("infoSprint2");
-            infoSprint2.innerHTML = "<div class='col-xs-12 col-sm-6 col-md-6' style='background-color: #cccc00 '>" + "2. " + caracoles[1].nombre + " / " + "Total: " + caracoles[i].distancia + " / " + "Sprint: " + sprint2 + "</div>";                     
-        }else if(i==2){
-            Sprint[2].nombre = caracoles[2].nombre;
-            Sprint[2].sprint = sprint3;
-            Sprint[2].total = caracoles[2].distancia;
-            var infoSprint3 = document.getElementById("infoSprint3");
-            infoSprint3.innerHTML = "<div class='col-xs-12 col-sm-6 col-md-6' style='background-color: #cccc00 '>" + "3. " + caracoles[2].nombre + " / " + "Total: " + caracoles[i].distancia + " / " + "Sprint: " + sprint3 + "</div>";                                     
-        }else if(i==3){
-            Sprint[3].nombre = caracoles[3].nombre;
-            Sprint[3].sprint = sprint4;
-            Sprint[3].total = caracoles[3].distancia;
-            var infoSprint4 = document.getElementById("infoSprint4");
-            infoSprint4.innerHTML = "<div class='col-xs-12 col-sm-6 col-md-6' style='background-color: #cccc00 '>" + "4. " + caracoles[3].nombre + " / " + "Total: " + caracoles[i].distancia + " / " + "Sprint: " + sprint4 + "</div>";                     
-        }
+
+        var numCargol=i+1;
+        Sprint[i].nombre = caracoles[i].nombre;
+        Sprint[i].sprint = caracoles[i].sprint;
+        Sprint[i].total = caracoles[i].distancia;
+        var infoSprint1 = document.getElementById("infoSprint"+numCargol);
+        infoSprint1.innerHTML = "<div class='col-xs-12 col-sm-6 col-md-6' style='background-color: #cccc00 '>" + numCargol+". " + caracoles[i].nombre 
+                + " / " + "Total: " + caracoles[i].distancia + " / " + "Sprint: " + caracoles[i].sprint + "</div>";                                     
+       
     }
 
     Sprints.push(Sprint);
-    var num = 0;
-    
+    showSprints();
+}
+
+function showSprints(){
+    var info = document.getElementById("info");
+    info.innerHTML ="";
     for (var i=0;i<Sprints.length;i++){
-        num++;
-        for (var i=0;i<Sprint.length;i++){
-            var info = document.getElementById("info");
-            info.innerHTML =+ "<div class='col-xs-12 col-md-12' style='background-color: #666600'>SPRINT"+ num +"</div>"+
-                    "<div class='col-xs-12 col-md-12' style='background-color: #666600'>1. " + Sprint[i].nombre + "</div>"+
-                    "<div class='col-xs-12 col-md-12' style='background-color: #666600'>2. " + Sprint[i].nombre + "</div>"+
-                    "<div class='col-xs-12 col-md-12' style='background-color: #666600'>3. " + Sprint[i].nombre + "</div>"+
-                    "<div class='col-xs-12 col-md-12' style='background-color: #666600'>4. " + Sprint[i].nombre + "</div>";
-        }
+        var Sprint=Sprints[i];
+
+        info.innerHTML += "<div class='col-xs-12 col-md-12' style='background-color: #666600'>SPRINT "+ (i+1) +"</div>"+
+                "<div class='col-xs-12 col-md-12' style='background-color: #cccc00'>1. " + Sprint[0].nombre + " / " + Sprint[0].total + "</div>"+
+                "<div class='col-xs-12 col-md-12' style='background-color: #cccc00'>2. " + Sprint[1].nombre + " / " + Sprint[1].total + "</div>"+
+                "<div class='col-xs-12 col-md-12' style='background-color: #cccc00'>3. " + Sprint[2].nombre + " / " + Sprint[2].total + "</div>"+
+                "<div class='col-xs-12 col-md-12' style='background-color: #cccc00'>4. " + Sprint[3].nombre + " / " + Sprint[3].total + "</div>";
     }
- 
 }
 
 function finalizar(){
@@ -110,7 +97,7 @@ function finalizar(){
     for (var i=0;i<caracoles.length;i++){
         if(i==0){
             var infoClasificacion1 = document.getElementById("infoClasificacion1");
-            infoClasificacion1.innerHTML = "<div class='col-xs-12 col-sm-6' style='background-color: #cccc00 '>"+ (i+1) + ". " + caracoles[i].nombre + " / Puntos: " + caracoles[i].puntos + " / Velocidad: " + caracoles[i].velocidad + "</div>";
+            infoClasificacion1.innerHTML = ""+ (i+1) + ". " + caracoles[i].nombre + " / Puntos: " + caracoles[i].puntos + " / Velocidad: " + caracoles[i].velocidad + "";
         }else if(i==1){
             var infoClasificacion2 = document.getElementById("infoClasificacion2");
             infoClasificacion2.innerHTML = "<div class='col-xs-12 col-sm-6' style='background-color: #cccc00 '>"+ (i+1) + ". " + caracoles[i].nombre + " / Puntos: " + caracoles[i].puntos + " / Velocidad: " + caracoles[i].velocidad + "</div>";
@@ -122,4 +109,20 @@ function finalizar(){
             infoClasificacion4.innerHTML = "<div class='col-xs-12 col-sm-6' style='background-color: #cccc00 '>"+ (i+1) + ". " + caracoles[i].nombre + " / Puntos: " + caracoles[i].puntos + " / Velocidad: " + caracoles[i].velocidad + "</div>";
         }
     }
+    
+    
+}
+
+function nueva(){
+    Sprints = [];
+    showSprints();
+    
+    for (var i=0;i<caracoles.length;i++){
+
+        var numCargol=i+1;
+        var infoSprint1 = document.getElementById("infoSprint"+numCargol);
+        infoSprint1.innerHTML = "<div class='col-xs-12 col-sm-6 col-md-6' style='background-color: #cccc00 '></div>";                                     
+       
+    }
+    
 }
