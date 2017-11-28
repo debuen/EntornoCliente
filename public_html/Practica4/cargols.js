@@ -63,7 +63,7 @@ function showSprints(){
         var Sprint=Sprints[i];
 
         info.innerHTML += "<div class='col-xs-12 col-md-12' style='background-color: #666600'>SPRINT "+ (i+1) +"</div>"+
-                "<div class='col-xs-12 col-md-12' style='background-color: #cccc00'>1. " + Sprint[i].nombre + " / " + Sprint[i].total + "</div>"+
+                "<div class='col-xs-12 col-md-12' style='background-color: #cccc00'>1. " + Sprint[0].nombre + " / " + Sprint[0].total + "</div>"+
                 "<div class='col-xs-12 col-md-12' style='background-color: #cccc00'>2. " + Sprint[1].nombre + " / " + Sprint[1].total + "</div>"+
                 "<div class='col-xs-12 col-md-12' style='background-color: #cccc00'>3. " + Sprint[2].nombre + " / " + Sprint[2].total + "</div>"+
                 "<div class='col-xs-12 col-md-12' style='background-color: #cccc00'>4. " + Sprint[3].nombre + " / " + Sprint[3].total + "</div>";
@@ -106,7 +106,7 @@ function finalizar(){
         }
     }
     
-    
+    document.getElementById('run').setAttribute("disabled","disabled");
 }
 
 function nueva(){
@@ -121,6 +121,10 @@ function nueva(){
        
     }
     
+    for (var i=0;i<caracoles.length;i++){
+        caracoles[i].distancia = 0;
+    }
+    
     contador = 0;
     var numSprint = document.getElementById("numSprint");
     numSprint.innerHTML = "<p>SPRINT</p>";
@@ -128,10 +132,6 @@ function nueva(){
 
 function borrar(){
     var numero = window.prompt("Sprint a borrar: ");
-    for(i=0;i<Sprints.length;i++){
-        if(Sprints[i] == numero){
-            Sprints.splice(i, 1);
-        }
-    }
+    Sprints.splice((numero-1), 1);
     showSprints();
 }
