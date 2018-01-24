@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+        <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="holder.min.js" type="text/javascript"></script>
+        
+    </head>
+    <body>
+        <div class="panel-group" id="desplegable">
+            <div class="panel panel-primary">
+                <div class="panel-heading"> <h4 class="panel-title">
+                    <a href="#panel1" data-toggle="collapse" data-parent="#desplegable">
+                        Informacion pantalla</a></h4>
+                </div>
+                <div id="panel1" class="panel-collapse collapse">
+                    <ul id="infoPantalla" class="panel-body"></ul>
+                </div>
+                
+                </br>
+                
+                <div class="panel-heading"> <h4 class="panel-title">
+                    <a href="#panel2" data-toggle="collapse" data-parent="#desplegable">
+                        Informacion Navegador</a></h4>
+                </div>
+                <div id="panel2" class="panel-collapse collapse">
+                    <ul id="infoNavegador" class="panel-body">
+                        
+                    </ul>
+                </div>
+                
+                </br>
+                
+                <div class="panel-heading"> <h4 class="panel-title">
+                    <a href="#panel3" data-toggle="collapse" data-parent="#desplegable">
+                        Informacion location URL</a></h4>
+                </div>
+                <div id="panel3" class="panel-collapse collapse">
+                    <ul id="infoURL" class="panel-body">
+                        
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        </br>
+        <div>
+            <div class="glyphicon glyphicon-plus collapse in" id="b1" ></div>
+            <div class="glyphicon glyphicon-alert collapse in" id="b2" style="display: inline-block"></div>
+            <div class="glyphicon glyphicon-phone collapse in" id="b3" style="display: inline-block"></div>
+            <div class="glyphicon glyphicon-trash collapse in" id="b4" style="display: inline-block"></div>
+            <div class="glyphicon glyphicon-camera collapse in" id="b5" style="display: inline-block"></div></br>
+            <button data-toggle="collapse" data-target="#b1">1</button>
+            <button data-toggle="collapse" data-target="#b2">2</button>
+            <button data-toggle="collapse" data-target="#b3">3</button>
+            <button data-toggle="collapse" data-target="#b4">4</button>
+            <button data-toggle="collapse" data-target="#b5">5</button>
+        </div>
+        </br>
+        <button onclick="start()">START</button>
+        
+        <script src="newjavascript.js" type="text/javascript"></script>
+    </body>
+</html>
