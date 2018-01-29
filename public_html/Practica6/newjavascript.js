@@ -27,7 +27,7 @@ function checkNombre(){
     document.cookie= "edad = 15";
     console.log(document.cookie);
     
-    if(document.cookie) === ""){
+    if(document.cookie) == ""){
         var nombre = window.prompt("introduce nombre");
         
     }

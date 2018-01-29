@@ -39,4 +39,47 @@ function start(){
     var h = (screen.availHeight/2) - 300;
     window.open("juego.html", "miWindow", "right="+w+", left="+w+", top="+h+", bottom="+h+", width=600, height=600");
 }
-        
+       
+var preguntas = ["1. Cual es el rio mas largo del mundo?", "2. Que seleccion gano el mundial de 2010?", "3. Quien es el presidente de Estados Unidos?"];
+var respuestas = [["A - Nilo", "B - Amazonas", "C- Manzanares", "D - Danubio"],
+                ["Alemania", "Holanda", "España", "Portugal"],
+                ["Trump", "Bush", "Rajoy", "Obama"]];
+            
+var contador = 0;
+
+
+function showQuestionsAnswer(){
+    
+    
+    contador+1;
+}
+
+var correct = false;
+
+function checkAnswer1(){
+    if(contador == 3){
+        correct = true;
+    }else{
+        correct = false;
+    }
+}
+
+function checkAnswer2(){
+    if(contador == 1){
+        correct = true;
+    }else{
+        correct = false;
+    }
+}
+
+function checkAnswer3(){
+    if(contador == 2){
+        correct = true;
+    }else{
+        correct = false;
+    }
+}
+
+function checkAnswer4(){    
+    correct = false;
+}
