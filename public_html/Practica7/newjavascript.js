@@ -1,4 +1,4 @@
-
+function cargar(){
 document.getElementById("infoPantalla").innerHTML = "<li>Height without taskbar: "+ screen.availHeight + "</li>"+ 
                                                     "<li>Width without taskbar: "+ screen.availWidth + "</li>" +
                                                     "<li>Total height: "+ screen.height + "</li>" +
@@ -28,7 +28,9 @@ navigator.geolocation.getCurrentPosition(showPosition);
 
 document.getElementById("infoURL").innerHTML = "<li>Host: "+ location.host + "</li>"+ 
                                                "<li><button onclick='getStucom()'>STUCOM</button></li>";
-                                       
+
+}
+                               
 
 function getStucom(){
     window.open("http://www.stucom.com","Nombre","scrollbars=no");  
@@ -41,17 +43,19 @@ function start(){
 }
        
 var preguntas = ["1. Cual es el rio mas largo del mundo?", "2. Que seleccion gano el mundial de 2010?", "3. Quien es el presidente de Estados Unidos?"];
-var respuestas = [["A - Nilo", "B - Amazonas", "C- Manzanares", "D - Danubio"],
-                ["Alemania", "Holanda", "España", "Portugal"],
-                ["Trump", "Bush", "Rajoy", "Obama"]];
+var respuestas = [["A - Nilo", "B - Amazonas", "C - Manzanares", "D - Danubio"],
+                ["A - Alemania", "B - Holanda", "C - España", "D - Portugal"],
+                ["A - Trump", "B - Bush", "C - Rajoy", "D - Obama"]];
             
 var contador = 0;
 
-
 function showQuestionsAnswer(){
-    
-    
-    contador+1;
+    document.getElementById("pregunta").innerHTML = preguntas[contador];
+    document.getElementById("respuesta1").innerHTML = respuestas[contador][0];
+    document.getElementById("respuesta2").innerHTML = respuestas[contador][1];
+    document.getElementById("respuesta3").innerHTML = respuestas[contador][2];
+    document.getElementById("respuesta4").innerHTML = respuestas[contador][3];
+    contador = contador + 1;
 }
 
 var correct = false;
@@ -59,27 +63,39 @@ var correct = false;
 function checkAnswer1(){
     if(contador == 3){
         correct = true;
+        setTimeout(function(){alert("Correcto");},1000);
     }else{
         correct = false;
+        setTimeout(function(){alert("Incorrecto");},2000);
     }
+    showQuestionsAnswer();
 }
 
 function checkAnswer2(){
+    console.log(contador);
     if(contador == 1){
         correct = true;
+        setTimeout(function(){alert("Correcto");},2000);
     }else{
         correct = false;
+        setTimeout(function(){alert("Incorrecto");},2000);
     }
+    showQuestionsAnswer();
 }
 
 function checkAnswer3(){
     if(contador == 2){
         correct = true;
+        setTimeout(function(){alert("Correcto");},2000);
     }else{
         correct = false;
+        setTimeout(function(){alert("Incorrecto");},2000);
     }
+    showQuestionsAnswer();
 }
 
 function checkAnswer4(){    
     correct = false;
+    setTimeout(function(){alert("Incorrecto");},2000);
+    showQuestionsAnswer();
 }
