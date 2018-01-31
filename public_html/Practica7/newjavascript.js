@@ -52,23 +52,28 @@ var contador = 0;
 function showQuestionsAnswer(){
     if(contador == 3){
         window.close();
+        document.getElementById("puntos").innerHTML = "Has hecho "+ puntos + "puntos!!";
     }else{
-        document.getElementById('correcto').style.visibility='hidden';
-        document.getElementById('incorrecto').style.visibility='hidden';
-        document.getElementById("pregunta").innerHTML = preguntas[contador];
-        document.getElementById("respuesta1").innerHTML = respuestas[contador][0];
-        document.getElementById("respuesta2").innerHTML = respuestas[contador][1];
-        document.getElementById("respuesta3").innerHTML = respuestas[contador][2];
-        document.getElementById("respuesta4").innerHTML = respuestas[contador][3];
-        contador = contador + 1;
+            document.getElementById('correcto').style.visibility='hidden';
+            document.getElementById('incorrecto').style.visibility='hidden';
+            document.getElementById("pregunta").innerHTML = preguntas[contador];
+            
+            document.getElementById("respuesta1").innerHTML = respuestas[contador][0];
+            document.getElementById("respuesta2").innerHTML = respuestas[contador][1];
+            document.getElementById("respuesta3").innerHTML = respuestas[contador][2];
+            document.getElementById("respuesta4").innerHTML = respuestas[contador][3];
+            contador = contador + 1;
+            updateReloj();
     }
 }
 
 var correct = false;
+var puntos = 0;
 
 function checkAnswer1(){
     if(contador == 3){
         correct = true;
+        puntos = puntos + 1;
     }else{
         correct = false;
     }
@@ -79,6 +84,7 @@ function checkAnswer2(){
     console.log(contador);
     if(contador == 1){
         correct = true;
+        puntos = puntos + 1;
     }else{
         correct = false;
     }
@@ -88,6 +94,7 @@ function checkAnswer2(){
 function checkAnswer3(){
     if(contador == 2){
         correct = true;
+        puntos = puntos + 1;
     }else{
         correct = false;
     }
@@ -105,12 +112,28 @@ function check(){
         setTimeout(function(){
          document.getElementById('correcto').style.visibility='hidden';
          showQuestionsAnswer();
-        },2000);
+        },1000);
     }else{
         document.getElementById('incorrecto').style.visibility='visible';
         setTimeout(function(){
          document.getElementById('incorrecto').style.visibility='hidden';
          showQuestionsAnswer();
-        },2000);
+        },1000);
     }
 }
+
+var totalTiempo=10;
+
+function updateReloj(){
+    document.getElementById('cuentaAtras').innerHTML = totalTiempo+" segundos";
+    if(totalTiempo==0){
+        showQuestionsAnswear();
+        
+    }else{
+        /* Restamos un segundo al tiempo restante */
+        totalTiempo-=1;
+        /* Ejecutamos nuevamente la función al pasar 1000 milisegundos (1 segundo) */
+        setTimeout("updateReloj()",1000);
+    }
+}
+ 
